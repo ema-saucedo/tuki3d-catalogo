@@ -21,25 +21,25 @@ export function generateWhatsAppOrderLink(params: OrderWhatsAppParams): string {
   const phone = sanitizePhoneNumber(params.phoneNumber || DEFAULT_WHATSAPP);
 
   const lines = [
-    `👋 *¡Hola Tuki3d! Quiero realizar un pedido:*`,
+    `*¡Hola Tuki3d! Quiero realizar un pedido:*`,
     ``,
-    `🎮 *Producto:* ${params.productoNombre}`,
+    `*Producto:* ${params.productoNombre}`,
   ];
 
   if (params.tamanoElegido) {
-    lines.push(`📏 *Tamaño / Versión:* ${params.tamanoElegido}`);
+    lines.push(`*Tamaño / Versión:* ${params.tamanoElegido}`);
   }
 
-  lines.push(`💰 *Precio estimado:* $${params.precio.toLocaleString('es-AR')}`);
+  lines.push(`*Precio estimado:* $${params.precio.toLocaleString('es-AR')}`);
   lines.push(``);
-  lines.push(`👤 *Mis datos:*`);
-  lines.push(`• *Nombre:* ${params.clienteNombre}`);
-  lines.push(`• *Teléfono:* ${params.clienteTelefono}`);
-  lines.push(`• *Email:* ${params.clienteEmail}`);
+  lines.push(`*Mis datos:*`);
+  lines.push(`- *Nombre:* ${params.clienteNombre}`);
+  lines.push(`- *Teléfono:* ${params.clienteTelefono}`);
+  lines.push(`- *Email:* ${params.clienteEmail}`);
 
   if (params.aclaraciones && params.aclaraciones.trim().length > 0) {
     lines.push(``);
-    lines.push(`📝 *Aclaraciones / Personalización:*`);
+    lines.push(`*Aclaraciones / Personalización:*`);
     lines.push(`${params.aclaraciones.trim()}`);
   }
 
