@@ -168,7 +168,7 @@ VALUES
     'Lámpara Cubo Led RGB Gamer',
     'Iluminá tu rincón gamer con estilo geométrico futurista. Fabricada en filamento translúcido con soporte negro mate, diseñada para tiras led o velas led seguras.',
     18500,
-    'Decoración',
+    'Coleccionables',
     'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80',
     false,
     true,
@@ -178,9 +178,14 @@ VALUES
     'Llavero Articulado Dragón Custom',
     'Dragón fidget articulado impreso en una sola pieza con movimiento hiper fluido. Ideal para mochilas, llaves o desestresarse en el escritorio.',
     5500,
-    'Llaveros',
+    'Multimedia',
     'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80',
     false,
     true,
     '["Chico (12 cm)", "Grande (18 cm)"]'::jsonb
 );
+
+-- 8. MIGRACIÓN DE CATEGORÍAS (Para bases de datos ya existentes):
+-- UPDATE public.productos SET categoria = 'Coleccionables' WHERE categoria ILIKE 'decoraci%';
+-- UPDATE public.productos SET categoria = 'Multimedia' WHERE categoria ILIKE 'llaver%';
+-- UPDATE public.productos SET categoria = 'Otros' WHERE categoria ILIKE 'personaliz%';

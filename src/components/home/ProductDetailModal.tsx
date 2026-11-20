@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Sparkles, Check, ArrowRight, ShieldCheck, Box } from 'lucide-react';
 import { Producto } from '@/types/database';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, normalizeCategory } from '@/lib/utils';
 
 interface ProductDetailModalProps {
   product: Producto | null;
@@ -103,7 +103,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             <div className="md:col-span-6 flex flex-col justify-between space-y-5">
               <div>
                 <span className="text-xs uppercase font-bold text-purple-400 tracking-wider">
-                  {product.categoria}
+                  {normalizeCategory(product.categoria)}
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1 leading-snug">
                   {product.nombre}

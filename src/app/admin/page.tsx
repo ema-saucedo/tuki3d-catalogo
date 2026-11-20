@@ -25,7 +25,7 @@ import {
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { Producto, Pedido, PedidoEstado } from '@/types/database';
 import { INITIAL_PRODUCTS, DEFAULT_WHATSAPP } from '@/data/seedProducts';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, normalizeCategory } from '@/lib/utils';
 import { sanitizePhoneNumber } from '@/lib/whatsapp';
 
 export default function AdminPage() {
@@ -590,7 +590,7 @@ export default function AdminPage() {
 
                     <div className="flex-1 min-w-0">
                       <span className="text-[10px] uppercase font-bold text-purple-400">
-                        {prod.categoria}
+                        {normalizeCategory(prod.categoria)}
                       </span>
                       <h4 className="font-extrabold text-white text-base truncate">
                         {prod.nombre}
@@ -879,9 +879,9 @@ export default function AdminPage() {
                     className="w-full px-4 py-2.5 bg-purple-950/60 border border-purple-700/50 rounded-xl text-sm text-white focus:outline-none focus:border-tuki-yellow"
                   >
                     <option value="Setup & Gaming">Setup & Gaming</option>
-                    <option value="Decoración">Decoración</option>
-                    <option value="Llaveros">Llaveros</option>
-                    <option value="Personalizados">Personalizados</option>
+                    <option value="Coleccionables">Coleccionables</option>
+                    <option value="Multimedia">Multimedia</option>
+                    <option value="Otros">Otros</option>
                   </select>
                 </div>
 

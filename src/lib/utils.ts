@@ -12,3 +12,15 @@ export function formatPrice(price: number): string {
     maximumFractionDigits: 0,
   }).format(price);
 }
+
+export function normalizeCategory(category: string): string {
+  if (!category) return '';
+  const trimmed = category.trim();
+  const lower = trimmed.toLowerCase();
+  
+  if (lower === 'decoración' || lower === 'decoracion') return 'Coleccionables';
+  if (lower === 'llaveros' || lower === 'llavero') return 'Multimedia';
+  if (lower === 'personalizados' || lower === 'personalizado') return 'Otros';
+  
+  return trimmed;
+}

@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, SlidersHorizontal, PackageX, Sparkles } from 'lucide-react';
 import { Producto } from '@/types/database';
+import { normalizeCategory } from '@/lib/utils';
 import { ProductCard } from './ProductCard';
 
 interface ProductGridProps {
@@ -14,9 +15,9 @@ interface ProductGridProps {
 const CATEGORIES = [
   'Todos',
   'Setup & Gaming',
-  'Decoración',
-  'Llaveros',
-  'Personalizados',
+  'Coleccionables',
+  'Multimedia',
+  'Otros',
 ];
 
 export const ProductGrid: React.FC<ProductGridProps> = ({
@@ -30,16 +31,19 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
     return products.filter((product) => {
       if (!product.activo) return false;
 
+      const normCat = normalizeCategory(product.categoria);
+
       const matchesCategory =
         selectedCategory === 'Todos' ||
-        product.categoria.toLowerCase() === selectedCategory.toLowerCase();
+        normCat.toLowerCase() === selectedCategory.toLowerCase();
 
       const query = searchQuery.trim().toLowerCase();
       const matchesSearch =
         query === '' ||
         product.nombre.toLowerCase().includes(query) ||
         product.descripcion.toLowerCase().includes(query) ||
-        product.categoria.toLowerCase().includes(query);
+        product.categoria.toLowerCase().includes(query) ||
+        normCat.toLowerCase().includes(query);
 
       return matchesCategory && matchesSearch;
     });

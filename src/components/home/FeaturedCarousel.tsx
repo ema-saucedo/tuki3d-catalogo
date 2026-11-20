@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Sparkles, ArrowDown } from 'lucide-react';
 import { Producto } from '@/types/database';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, normalizeCategory } from '@/lib/utils';
 
 interface FeaturedCarouselProps {
   products: Producto[];
@@ -187,7 +187,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             {/* Info Limpia del Slide (Solo Título, Precio y Botón Pedir) */}
             <div className="md:col-span-5 flex flex-col justify-center space-y-5 text-left">
               <div className="inline-block text-xs font-semibold uppercase tracking-wider text-purple-300/80 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-700/40 w-fit">
-                {currentProduct.categoria}
+                {normalizeCategory(currentProduct.categoria)}
               </div>
 
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight">

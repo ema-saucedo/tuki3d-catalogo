@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Eye, Layers, Sparkles } from 'lucide-react';
 import { Producto } from '@/types/database';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, normalizeCategory } from '@/lib/utils';
 
 interface ProductCardProps {
   product: Producto;
@@ -52,7 +52,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
           </div>
 
           <div className="absolute top-2 right-2 bg-purple-900/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-purple-600/40">
-            {product.categoria}
+            {normalizeCategory(product.categoria)}
           </div>
         </div>
 
